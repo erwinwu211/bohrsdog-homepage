@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合同会社ボーアの犬 | AIコンサルティング</title>
+  <meta name="description" content="合同会社ボーアの犬 - AI技術で企業のDX推進を支援するAIコンサルティング会社">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1a1a2e;
+      --accent: #4a90d9;
+      --accent-light: #6bb0f0;
+      --text: #2c2c2c;
+      --text-light: #666;
+      --bg: #fafafa;
+      --white: #ffffff;
+      --border: #e0e0e0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 0 2rem;
+    }
+
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    nav .logo {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    nav .logo span {
+      color: var(--accent-light);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent-light);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 70%, rgba(74, 144, 217, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(107, 176, 240, 0.06) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-2%, 2%); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      border: 1px solid var(--accent-light);
+      color: var(--accent-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--accent-light);
+      color: var(--primary);
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title .en {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 1rem auto 0;
+    }
+
+    /* ── About ── */
+    .about {
+      background: var(--white);
+    }
+
+    .about-text {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 2.2;
+    }
+
+    /* ── Services ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
+
+    /* ── Company Info ── */
+    .company {
+      background: var(--white);
+    }
+
+    .company-table {
+      max-width: 700px;
+      margin: 0 auto;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .company-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .company-table th,
+    .company-table td {
+      padding: 1.2rem 1rem;
+      text-align: left;
+      font-size: 0.92rem;
+      vertical-align: top;
+    }
+
+    .company-table th {
+      width: 30%;
+      font-weight: 500;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .company-table td {
+      color: var(--text-light);
+    }
+
+    /* ── Contact ── */
+    .contact {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact .section-title h2 {
+      color: var(--white);
+    }
+
+    .contact .section-title .en {
+      color: var(--accent-light);
+    }
+
+    .contact .section-title::after {
+      background: var(--accent-light);
+    }
+
+    .contact p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact .btn {
+      border-color: var(--accent-light);
+      color: var(--accent-light);
+    }
+
+    .contact .btn:hover {
+      background: var(--accent-light);
+      color: var(--primary);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.98);
+        flex-direction: column;
+        padding: 1rem 2rem 2rem;
+        gap: 1rem;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .company-table th,
+      .company-table td {
+        display: block;
+        width: 100%;
+        padding: 0.6rem 1rem;
+      }
+
+      .company-table th {
+        padding-bottom: 0;
+      }
+
+      .company-table td {
+        padding-top: 0.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo"><span>Bohr's</span> Dog</div>
+      <button class="menu-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu">
+        <li><a href="#about">私たちについて</a></li>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>合同会社ボーアの犬</h1>
+      <div class="subtitle">Bohr's Dog LLC</div>
+      <p>
+        AIの力で、ビジネスの未来を切り拓く。<br>
+        私たちは企業のAI導入・活用を戦略から実装まで一貫して支援します。
+      </p>
+      <a href="#contact" class="btn">お問い合わせ</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="section-title">
+        <p class="en">About Us</p>
+        <h2>私たちについて</h2>
+      </div>
+      <p class="about-text">
+        合同会社ボーアの犬は、AI技術を活用した企業変革を支援するAIコンサルティング会社です。
+        「ボーアの犬」という社名は、物理学者ニールス・ボーアに由来し、
+        既成概念にとらわれない探求心と忠実なパートナーシップを象徴しています。<br><br>
+        最先端のAI技術と深い業界知識を組み合わせ、
+        お客様のビジネス課題に最適なソリューションをご提案いたします。
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="section-title">
+        <p class="en">Services</p>
+        <h2>サービス</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">&#x1F4CA;</div>
+          <h3>情報分析・処理サービス</h3>
+          <p>データの収集・分析・管理から情報提供まで、AI技術を活用した高度な情報処理サービスと研究開発を行います。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#x2699;</div>
+          <h3>ソフトウェア開発・AIコンサルティング</h3>
+          <p>ソフトウェア・ハードウェアの企画・研究・開発から設計・保守まで、ITに関する包括的なAIコンサルティングを提供します。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#x1F916;</div>
+          <h3>AI導入・活用支援</h3>
+          <p>生成AIの業務活用、機械学習モデルの開発、業務プロセスの自動化など、お客様に最適なAIソリューションをご提案します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section class="company" id="company">
+    <div class="section-inner">
+      <div class="section-title">
+        <p class="en">Company</p>
+        <h2>会社概要</h2>
+      </div>
+      <table class="company-table">
+        <tr>
+          <th>会社名</th>
+          <td>合同会社ボーアの犬</td>
+        </tr>
+        <tr>
+          <th>英文名</th>
+          <td>Bohr's Dog LLC</td>
+        </tr>
+        <tr>
+          <th>設立</th>
+          <td>2026年（令和8年）2月</td>
+        </tr>
+        <tr>
+          <th>代表社員</th>
+          <td>呉 智樹</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>東京都大田区</td>
+        </tr>
+        <tr>
+          <th>事業内容</th>
+          <td>情報の収集・分析・処理サービス及び情報処理に関する研究開発、ソフトウェア・ハードウェアの企画・開発・AIコンサルティング</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="section-title">
+        <p class="en">Contact</p>
+        <h2>お問い合わせ</h2>
+      </div>
+      <p>
+        AIの導入・活用に関するご相談はお気軽にお問い合わせください。
+      </p>
+      <a href="mailto:info@bohrdog.com" class="btn">メールで問い合わせる</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 合同会社ボーアの犬 All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function () {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.getElementById('nav-menu').classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
